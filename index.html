@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by jamicope (http://jsbin.com/toriya/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+
+<script id="jsbin-javascript">
+
+  //use .slice to copy(specify which elements to return. 0,4 is the range minus the final element called)
+function firstFourItems(array) {
+  return array.slice(0,4);
+}
+
+  //use .slice to copy(specify last 3 with "-" + the number of items to call)
+function lastThreeItems(array) {
+  return array.slice(-3);
+}
+
+
+
+
+/* From here down, you are not expected to 
+   understand.... for now :)  
+   
+   
+   Nothing to see here!
+   
+*/
+
+
+// tests
+
+function testFunctionWorks(fn, input, expected) {
+  
+  var result = fn(input);
+  if (
+    result && result.length === expected.length &&
+    result.every(function(item) {
+      return expected.indexOf(item) > -1;
+    })) {
+    console.log('SUCCESS: `' + fn.name + '` works!')
+    return true;
+  } 
+  else {
+    console.error('FAILURE: `' + fn.name + '` is not working')
+    return false;
+  } 
+}
+
+function runTests() {
+  
+  var list = ["red bull", "monster", "amp", "rockstar", "full throttle"];
+  var result1 = ["red bull", "monster", "amp", "rockstar"];
+  var result2 = ["amp", "rockstar", "full throttle"];
+  
+  var testResults = [
+    testFunctionWorks(firstFourItems, list, result1),
+    testFunctionWorks(lastThreeItems, list, result2),
+  ];
+  
+  
+  var numPassing = testResults.filter(function(result){ return result; }).length;
+  console.log(numPassing + ' out of ' + testResults.length + ' tests passing.');
+}
+
+runTests();
+
+</script>
+</body>
+</html>
